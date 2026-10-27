@@ -1,6 +1,7 @@
 
-import type { NewWizard, Wizard } from "../shared/types";
 import type { WizardRepository } from "./wizard.repository";
+import type { House, NewWizard, Wizard } from "../shared/types";
+
 
 export class InMemoryWizardRepository implements WizardRepository {
     private readonly wizards = new Map<number, Wizard>();
@@ -20,4 +21,11 @@ export class InMemoryWizardRepository implements WizardRepository {
     getAll(): Wizard[] {
         return Array.from(this.wizards.values());
     }
+
+    findByHouse(house: House): Wizard[] {
+        return this.getAll().filter(
+            wizard => wizard.house === house
+        );
+    }
+
 }

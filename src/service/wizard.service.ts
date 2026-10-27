@@ -1,6 +1,9 @@
 
-import type { NewWizard, Wizard } from "../shared/types";
 import type { WizardRepository } from "../repository/wizard.repository";
+
+import type { House, NewWizard, Wizard } from "../shared/types";
+
+
 
 export class WizardService {
     constructor(
@@ -13,5 +16,9 @@ export class WizardService {
 
     getAllWizards(): Wizard[] {
         return this.wizardRepository.getAll();
+    }
+    // À ajouter dans la classe WizardService :
+    findByHouse(house: House): Wizard[] {
+        return this.wizardRepository.findByHouse(house);
     }
 }

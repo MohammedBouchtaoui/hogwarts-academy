@@ -22,3 +22,7 @@ const hermione = wizardService.createWizard({
 console.log("Premier sorcier :", harry);
 console.log("Deuxième sorcière :", hermione);
 console.log("Tous les sorciers :", wizardService.getAllWizards());
+
+console.log(
+    "Sorciers de Gryffindor :", wizardService.findByHouse("Gryffindor")
+);
