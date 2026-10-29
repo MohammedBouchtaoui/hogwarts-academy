@@ -4,6 +4,7 @@ import { WizardService } from "./service/wizard.service";
 
 import { handleSpellCast } from "./events/spell-cast.handler";
 import   {SpellRepository} from "./repository/spell.repository"
+import { Cache } from "./decorator/decorators";
 
 
 const repository = new InMemoryWizardRepository();
@@ -68,3 +69,20 @@ try {
 }
 
 console.log("Nombre final de sorts :", spells.getAll().length);
+
+// l'ajjout  d'exercie  5    ((cache)
+
+class SpellCalculator {
+    @Cache
+    calculatePower(basePower: number, multiplier: number): number {
+        console.log("Calculating...");
+
+        return basePower * multiplier;
+    }
+}
+
+const calculator = new SpellCalculator();
+
+console.log(calculator.calculatePower(10, 3));
+console.log(calculator.calculatePower(10, 3));
+console.log(calculator.calculatePower(5, 2));
