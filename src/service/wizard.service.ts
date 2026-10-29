@@ -10,6 +10,7 @@ export class WizardService {
         private readonly wizardRepository: WizardRepository
     ) {}
 
+
     createWizard(wizard: NewWizard): Wizard {
         return this.wizardRepository.add(wizard);
     }
