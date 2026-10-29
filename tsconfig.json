@@ -12,3 +12,8 @@
   },
   "include": ["src/**/*.ts"]
 }
+
+
+  "compileOption" {
+
+}
