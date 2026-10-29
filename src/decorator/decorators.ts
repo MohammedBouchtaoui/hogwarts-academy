@@ -30,9 +30,7 @@ export function ValidateSpellPower(
 
 //************************** logiUe dd  decorator de  cache  **************
 export function Cache(
-    _target: object,
-    propertyKey: string | symbol,
-    descriptor: PropertyDescriptor
+    _target: object,    propertyKey: string | symbol, descriptor: PropertyDescriptor
 ): void {
     const originalMethod = descriptor.value as (
         ...args: unknown[]
@@ -43,7 +41,6 @@ export function Cache(
         object,
         Map<string, unknown>
     >();
-
     descriptor.value = function (
         this: object,
         ...args: unknown[]
@@ -51,7 +48,6 @@ export function Cache(
         let cache = instanceCaches.get(this);
 
         if (!cache) {
-
 
             cache = new Map<string, unknown>();
             instanceCaches.set(this, cache);
@@ -64,7 +60,6 @@ export function Cache(
             console.log(`[CACHE HIT] ${String(propertyKey)}`);
             return cache.get(key);
         }
-
         console.log(`[CACHE MISS] ${String(propertyKey)}`);
 
         const result = originalMethod.apply(this, args);
